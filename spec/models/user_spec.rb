@@ -21,4 +21,9 @@ RSpec.describe User, type: :model do
     expect(user.errors.full_messages[0]).to eq("Email has already been taken")
   end
 
+  it "is valid with valid attributes" do
+    user = build(:user)
+    expect(user).to be_valid
+  end
+
 end
