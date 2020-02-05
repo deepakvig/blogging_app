@@ -1,11 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe "posts/show", type: :view do
+  let(:user) { create :user }
   before(:each) do
+    allow(view).to receive(:current_user).and_return(user)
     @post = assign(:post, Post.create!(
       :title => "Title",
       :body => "MyText",
-      :user => create(:user)
+      :user => user
     ))
   end
 

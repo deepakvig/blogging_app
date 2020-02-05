@@ -34,7 +34,7 @@ RSpec.describe PostsController, type: :controller do
   }
 
   let(:invalid_attributes) {
-    attributes_for(:post).merge({user_id: nil})
+    attributes_for(:post).merge({title: nil})
   }
 
   # This should return the minimal set of values that should be in the session
