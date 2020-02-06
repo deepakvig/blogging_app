@@ -23,7 +23,7 @@
     <% end %>
   </tbody>
 </table>
-
+<%= will_paginate @posts, class: 'pagination-lg' %>
 <br>
 
 <%= link_to 'New Post', new_post_path %>
