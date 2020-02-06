@@ -53,16 +53,16 @@ RSpec.describe CommentsController, type: :controller do
         }.to change(Comment, :count).by(1)
       end
 
-      it "redirects to the created comment" do
+      it "redirects to the post with latest comment" do
         post :create, params: {comment: valid_attributes, post_id: post1.id}, session: valid_session
-        expect(response).to redirect_to([post1, Comment.last] )
+        expect(response).to redirect_to(post_url(post1))
       end
     end
 
     context "with invalid params" do
-      it "returns a success response (i.e. to display the 'new' template)" do
+      it "redirects to the post page" do
         post :create, params: {comment: invalid_attributes, post_id: post1.id}, session: valid_session
-        expect(response).to be_successful
+        expect(response).to redirect_to(post_url(post1))
       end
     end
   end

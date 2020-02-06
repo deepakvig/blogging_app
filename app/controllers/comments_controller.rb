@@ -1,19 +1,19 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:destroy]
   before_action :set_comment_post, only: [:create, :destroy]
-  before_action :set_comment_user, only: [:create]
 
   # POST /comments
   # POST /comments.json
   def create
     @comment = @post.comments.build(comment_params)
+    @comment.user = current_user
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to [@post, @comment], notice: 'Comment was successfully created.' }
+        format.html { redirect_to @post, notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: [@post, @comment] }
       else
-        format.html { render :new }
+        format.html { redirect_to @post, notice: 'Comment cannot be created.' }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
@@ -37,10 +37,6 @@ class CommentsController < ApplicationController
 
     def set_comment_post
       @post = Post.find(params[:post_id])
-    end
-
-    def set_comment_user
-      params[:comment][:user_id] = current_user.id.to_s
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
