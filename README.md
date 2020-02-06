@@ -26,7 +26,7 @@
 * Deploy project to Heroku (make an account for free)
 
 ### To use the app, follow these steps
-* git clone git@github.com:deepakvig/bloggin_app.git
+* git clone git@github.com:deepakvig/blogging_app.git
 * bundle
 * rake db:create
 * rake db:migrate
