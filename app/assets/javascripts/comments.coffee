@@ -4,7 +4,6 @@
 
 document.addEventListener 'DOMContentLoaded', (->
   $('#add_comment').on 'click', (e) ->
-  	console.log "skjdhfkshdf"
   	e.preventDefault()
   	$('#create_comment').slideDown()
   	$('#add_comment').hide()

@@ -11,5 +11,9 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe CommentsHelper, type: :helper do
-  #pending "add some examples to (or delete) #{__FILE__}"
+  describe "#break_the_lines" do
+    it "returns html_safe string" do
+      helper.break_the_lines("abc\ndef").should eql('abc<br/>def')
+    end
+  end
 end
