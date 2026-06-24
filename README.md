@@ -31,6 +31,6 @@
 * rake db:create
 * rake db:migrate
 
-### To run test, type
+### To run test
 * rspec
 
